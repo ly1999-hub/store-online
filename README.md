@@ -5,4 +5,4 @@ server :
 client:
   +use reactjs
   +use boostrap
-connect to server by axios
+Connect to server by axios
