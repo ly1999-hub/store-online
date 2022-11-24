@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Menu from "./compoment/menu";
+import ReactDOM from "react-dom/client";
+//import Attire from "./compoment/attire";
+import TagLists from "./compoment/tagLists.js";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className={"App"}>
+          <Menu/>
+          <TagLists />
+      </div>
   );
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(<App />);
