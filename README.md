@@ -1,8 +1,8 @@
 # store-online
-server : 
+-server : 
   + use nodejs framework Express
   + use mongodb 
-client:
+-client :
   +use reactjs
   +use boostrap
-Connect to server by axios
+-connect : Connect to server by axios
