@@ -1,14 +1,37 @@
 const Attire = require("../models/attire");
-var errors = {
-    name: String,
+const Response=require('../log/response')
+const { default: mongoose, isValidObjectId } = require('mongoose');
 
-}
-module.exports.getAttire = async function(req, res, next) {
+module.exports.getAllAttire = async function(req, res, next) {
     try {
-        var attire = await Attire.find()
+        var attires = await Attire.find()
     } catch (error) {
-        errors.name = error;
         console.log(error)
     }
-    res.send(attire)
+    res.json(attires)
+}
+
+module.exports.getDetailAttire=async function(req,res,next){
+    const id = req.params.id;
+    if (isValidObjectId(id)) {
+        const UserDetail = await Attire.findById(id)
+        res.json(UserDetail)
+    }else{
+        res.json(Response.Status.Status400)
+    }
+}
+
+module.exports.searchAttire=async function(req,res,next){
+    var nameSearch=req.query.name;
+    try {
+        var Attires=await Attire.find();
+        var listAttires=Attires.filter(function(attire){
+            return attire.name.toLowerCase().indexOf(nameSearch.toLowerCase()) !== -1;
+        })
+    
+        res.json(listAttires)
+    } catch (error) {
+        res.json(Response.Status.Status400)
+    }
+    
 }
